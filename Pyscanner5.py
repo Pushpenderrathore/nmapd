@@ -2,36 +2,6 @@
 """
 PyScanner v9.0 - Professional Python Network Scanner (nmap-like)
 ================================================================
-v1->v8 retained (all fixes, upgrades, and enhancements)
-
-v8->v9 capabilities:
-  [V9-1] BPF/libpcap packet capture: PacketCapture wraps libpcap via
-          ctypes with a kernel-level BPF filter ("tcp and host X"),
-          eliminating false positives from other hosts' traffic.
-          Falls back to raw socket automatically if libpcap absent.
-          Plugged into syn_batch_scan as a drop-in recv_sock replacement.
-  [V9-2] Distributed scanning: DistributedScanner splits targets into
-          N shards and runs parallel sub-processes via
-          multiprocessing.Pool. DistributedWorkerServer provides an
-          HTTP API so remote worker nodes can be coordinated.
-          Results from all shards are merged and deduplicated.
-  [V9-3] 20 additional vulnerability/recon plugins (33 total):
-          heartbleed, ms17_010, http_methods, dns_zone_transfer,
-          smtp_open_relay, ssh_hostkey, telnet_banner, vnc_no_auth,
-          http_robots, mysql_empty_password, ntp_monlist,
-          elasticsearch_unauth, k8s_unauth, memcached_unauth,
-          rsync_unauth, snmp_community, ldap_rootdse,
-          pop3_capabilities, iis_webdav, tftp_test
-  [V9-4] Epoll/select receive loop: _EpollReceiver replaces blocking
-          recvfrom() with epoll (Linux) or select (cross-platform),
-          batch-draining the socket in non-blocking mode. 2-5x fewer
-          CPU cycles per packet on high-traffic networks.
-  [V9-5] Nmap-compatible XML + CSV export: export_xml() writes the
-          Nmap .xml schema (importable by Metasploit/Nessus/Armitage);
-          export_csv() writes a flat table suitable for spreadsheets.
-  [V9-6] Network topology summary: TopologyAnalyzer groups hosts by
-          /24 subnet, ranks most-open hosts, identifies likely
-          gateways, and prints an ASCII tree of the network.
 
 Usage:
   python pyscanner.py -t 192.168.1.1 -p 1-1024 --scan-type syn
