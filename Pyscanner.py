@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-PyScanner v9.0 - Professional Python Network Scanner (nmap-like)
+PyScanner v9.0 - Professional Python Network Scanner
 ================================================================
 
 Usage:
